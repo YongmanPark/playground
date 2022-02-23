@@ -3,11 +3,14 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
+import { click } from '@testing-library/user-event/dist/click';
 
 function App() {
 
   let posts = 'test contents';
   let styles = {color: 'gold', fontSize: '30px'}
+
+  let [modal, modal변경] = useState(false);
 
   let [글제목,글제목변경] = useState(['남자 코트 추천','우동 맛집 추천', '일단 추천 한다']);
   let [따봉, 따봉변경] = useState(0);
@@ -41,19 +44,32 @@ function App() {
         <hr/>
       </div>
       <div className='list'>
-        <h3>{글제목[2]}</h3>
+        <h3 onClick={ ()=>{modal변경(true)}}>{글제목[2]}</h3>
         <p>2월 17일 발행</p>
         <hr/>
       </div>
 
+      <button onClick={()=>{modal변경(!modal)}}>버튼</button>
+      {
+        modal === true 
+        ? <Modal />
+        : null
+      }
     </div>
   );
 }
 
+function Modal(){
+  return(
+    <div className='modal'>
+      <h3>제목</h3>
+      <p>날짜</p>
+      <p>상세내용 </p>
+    </div>
+  )
+}
+
+
 export default App;
 
-/*
-this is test for clone colding,
-i am using my company computer to connect my project 
-which is made by my home laptop
-*/
+/* still test */
