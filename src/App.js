@@ -45,8 +45,7 @@ function App() {
       </div>
 
     {gg()}
-
-
+ 
       {
         글제목.map(function(a){
           return   (
@@ -64,7 +63,7 @@ function App() {
       <button onClick={()=>{modal변경(!modal)}}>버튼</button>
       {
         modal === true 
-        ? <Modal />
+        ? <Modal 글제목={글제목}></Modal>
         : null
       }
 
@@ -75,10 +74,10 @@ function App() {
  
 }
 
-function Modal(){
+function Modal(props){
   return(
     <div className='modal'>
-      <h3>제목</h3>
+      <h3>제목 : {props.글제목[1]}</h3>
       <p>날짜</p>
       <p>상세내용 </p>
     </div>
@@ -87,5 +86,3 @@ function Modal(){
 
 
 export default App;
-
-/* still test */
