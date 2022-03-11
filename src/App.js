@@ -63,6 +63,8 @@ function App() {
         }}>저장</button>
       </div>
 
+      <Proflie/>
+
       <button onClick={()=>{modal변경(!modal)}}>열고닫기</button>
       {
         modal === true 
@@ -85,6 +87,28 @@ function Modal(props){
       <p>상세내용 </p>
     </div>
   )
+}
+
+class Proflie extends React.Component{
+  constructor(){
+    super(); 
+    this.state = {name : 'park'}
+  } 
+
+  changeName(){
+   this.setState({name : 'kim'})
+  }
+
+  render(){
+    return(
+      <div>
+        <h4>프로필입니다</h4>
+        <p> 저는 { this.state.name} 이다</p> 
+        <button onClick={this.changeName.bind(this)}>버튼</button>
+      </div>
+      
+    )
+  }
 }
 
 
