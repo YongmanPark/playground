@@ -43,7 +43,7 @@ function App() {
       {
         글제목.map(function(a, i){
           return   (
-            <div className='list'>
+            <div className='list' key={i}>
             <h3 onClick={()=>{ 누른제목변경(i) }}>{a} <span onClick={ () => {따봉변경(따봉+1)}}>👍</span>{따봉}</h3>
             <p>2월 17일 발행</p>
             <hr/>
@@ -54,14 +54,10 @@ function App() {
         })
       }
       
-      {/*
-      <button onClick={()=>{ 누른제목변경(0)}}>버튼1</button>
-      <button onClick={()=>{ 누른제목변경(1)}}>버튼2</button>
-      <button onClick={()=>{ 누른제목변경(2)}}>버튼3</button>
-      */}
-
-      
-      <input onChange={(e) => { 입력값변경(e.target.value)} } />
+      <div className='publish'>
+        <input onChange={(e) => {입력값변경(e.target.value)}}/>
+        <button onClick={()=>{Modal(입력값)}}>저장</button>
+      </div>
 
       <button onClick={()=>{modal변경(!modal)}}>열고닫기</button>
       {
